@@ -1,0 +1,149 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica-Bold;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 HelveticaNeue;
+}
+{\colortbl;\red255\green255\blue255;\red191\green133\blue85;\red31\green31\blue36;\red84\green130\blue255;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c74902\c52157\c33333;\csgenericrgb\c12054\c12284\c14131;\csgenericrgb\c33019\c51127\c99859;
+}
+\margl1440\margr1440\vieww8440\viewh14680\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b\fs72 \cf0 assn 3.0 (DUE WEDNESDAY OCT 23)\
+
+\fs48 Things to turn in:\
+1. UML Diagram on doc directory\
+2. Software development plan (plan.md)\
+3. First Draft of user\'92s manual in doc directory\
+4. Keep current with Sprint_Signature.md\
+
+\fs36 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 Must complete this portion of the assignment before beginning to code\
+Create a UML diagram that describes the starter code\
+Look at class notes on gitlab from Wednesday Oct. 15th\
+UML diagram consists of classes, methods and data members\
+Ex. Assn1 tech tree Head-> Grep-> Tail->Cut->Paste\
+Diagram should match this plan.md file\
+Classes on diagram must have 3 sections\
+Create a first draft of the user\'92s Manuel describing the expected Interface\
+Link to website to create UML diagram: 
+\f2 \cf2 \cb3 (\cf4 https://www.draw.io/\cf2 )
+\f1 \cf0 \cb1 \
+Can also be found in class notes or instructions
+\fs48 \
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b \cf0 Prep:
+\f1\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs36 \cf0 Create a class called Deck\
+User input for:\
+1. Size of cards (size of 2D array) (Does every card in the deck have to be the same size?)\
+2. # of cards (# of 2D arrays)\
+3. Max number possible on each card (What is the limit?)\
+\
+Should include:\
+- Method that prints a specific card in deck to screen \
+- Method that prints entire deck to screen\
+- method that prints whole deck to a file of user\'92s choice\
+\
+A deck must contain the user-specified number of cards between [3, 10_000]\
+Each card is assigned unique integer identifier (ex. c1 = 1, c2 = 3 etc.) This makes it possible for user to choose a specific card\
+Numbers on the bingo card must be between 1 and a user specified value \
+Cannot repeat the same number on the same bingo card\
+When a new deck is created, the pervious deck is lost (deleted from memory)\
+If card_size == odd \'97> create FREE square in the middle; else \'97> no FREE square\
+Once created, each card should remain the same; The same card displayed multiple times must remain the same value\
+\
+WHEN PROMPTING USER FOR USER_INPUT, PROVIDE RANGES SO USER KNOWS WHAT TO BE INPUTTED\
+IF USER_INPUT IS INVALID, NO CARDS SHOULD BE CREATED AND THE USER SHOULD BE PROMPTED AGAIN
+\fs24 \
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs72 \cf0 \
+UserInterface.py:
+\fs48 \
+\
+def run(self):\
+-method that prints option to \'91C\'92 create a deck or \'91X\'92 exit\
+\
+def __createDeck(self):\
+-method that prompts user to specify \
+1. Card size\
+2. Max Number\
+3. Number of Cards\
+\
+def __deckMenu(self):  (Already completed in Starter Code)\
+-method that prints option \'91P\'92 - print a card to the screen\
+							    \'91D\'92 - Display all cards to the screen \
+							    \'92S\'92 - Save the whole deck to file of user\'92s choice\
+\
+def __printCard(self): (Already Completed in Started Code)\
+-method that prints a single card of user\'92s choice\
+\
+def __saveDeck(self):\
+-method that saves a deck to a file\
+Open a file and pass to currentDeck.print()\
+\
+\
+
+\fs72 Card.py:\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs48 \cf0 def getId(self):\
+- method that return integer ID number of the card\
+- integer Id should be sequential (1 - num_cards_in_deck)\
+\
+def getSize(self):\
+- method that return size of one card in deck\
+ex. 3X3 card returns 3; 5X5 card return 5\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\fs72 \cf0 NumberSet.py:
+\fs48 \
+\
+def getSize(self):\
+- return int size of number set\
+\
+def get(self):\
+- Return an Integer: get the number from this NumberSet at an index\
+\
+def randomize(self):\
+- shuffle the number set\
+\
+Def getNext(self):\
+Return an integer: when called repeatedly return successive values from the NumberSet until the end is reached, at which time \'91None\'92 is returned \
+\
+
+\fs72 Deck.py:
+\fs48 \
+\
+def __init__(self, cardSize, cardCount, nuberMax):\
+Construct the deck\
+\
+def getCardCount(self):\
+Return an int num_cards_in_deck\
+\
+def getCard(self, n):\
+Return card N from deck\
+\
+\
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\b \cf0 \
+\
+\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f1\b0 \cf0 \
+}
